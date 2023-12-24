@@ -1,0 +1,32 @@
+{
+  "database":
+  {
+    "music": [
+      {
+        "id": 6,
+        "title": "Californication",
+        "artists": ["Red Hot Chilli Peppers"],
+        "genre": "Rock",
+        "length": "05:33"
+      },
+      {
+        "id": 8,
+        "title": "California Love",
+        "artists": ["2Pac", "Dr. Dre"],
+        "genre": "HipHop",
+        "length": "04:22"
+      }
+    ],
+    "users": [
+      {
+        "username": "user-test"
+      },
+      {
+        "username": "another_user"
+      },
+      {
+        "username": "super user"
+      }
+    ]
+  }
+}
