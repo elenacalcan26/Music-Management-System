@@ -11,7 +11,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class TestInputParser {
+public class TestDatabasePopulationFromInput {
 
   List<String> artistsSong1 = List.of("Red Hot Chilli Peppers");
   List<String> artistsSong2 = List.of("2Pac", "Dr. Dre");
