@@ -1,6 +1,7 @@
 import database.Database;
 import domain.Song;
 import domain.User;
+import exceptions.NoItemPresentInTable;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -17,7 +18,7 @@ public class TestDatabasePopulationFromInput {
   List<String> artistsSong2 = List.of("2Pac", "Dr. Dre");
 
   @BeforeAll
-  public static void setup() {
+  public static void setup() throws NoItemPresentInTable {
     JsonParser.parseInput("src/test/resources/inputParserTestFile.json");
   }
 
