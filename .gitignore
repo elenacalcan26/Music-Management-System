@@ -3,3 +3,9 @@ build
 .idea
 
 .gradle
+
+jdks
+daemon
+caches
+native
+.tmp
