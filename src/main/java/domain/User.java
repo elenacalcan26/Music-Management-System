@@ -1,6 +1,9 @@
 package domain;
 
+import exceptions.SongPresentInPlaylistException;
+
 import java.util.*;
+import java.util.logging.Logger;
 
 public class User {
   private String username;
@@ -14,20 +17,20 @@ public class User {
     return username;
   }
 
-  public void setUsername(String username) {
-    this.username = username;
-  }
+  private static Logger logger = Logger.getLogger(User.class.getName());
 
   public Set<Song> getPlaylist() {
     return Collections.unmodifiableSet(playlist);
   }
 
-  public void addSongToPlaylist(Song song) {
+  public void addSongToPlaylist(Song song) throws SongPresentInPlaylistException {
     if (playlist.contains(song)) {
-      System.out.println("Nope");
+      throw new SongPresentInPlaylistException("Song already exists in playlist");
     }
 
     playlist.add(song);
+
+    logger.info("Song with id = " + song.getId() + " is added to user " + username + " playlist!");
   }
 
   @Override
