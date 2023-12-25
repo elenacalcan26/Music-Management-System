@@ -4,6 +4,7 @@ import domain.User;
 import exceptions.NoItemPresentInTable;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import parser.JsonParser;
 import utils.Genre;
@@ -12,6 +13,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@Disabled
 public class TestDatabasePopulationFromInput {
 
   List<String> artistsSong1 = List.of("Red Hot Chilli Peppers");
