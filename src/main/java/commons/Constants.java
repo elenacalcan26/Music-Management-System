@@ -14,4 +14,12 @@ public class Constants {
 
   public static final String USERS = "users";
   public static final String USERNAME = "username";
+
+  public static final String COMMANDS = "commands";
+  public static final String ADD_TO_PLAYLIST = "addToPlaylist";
+  public static final String PLAY_SONG = "playSong";
+  public static final String PLAY_SONGS_FROM_PLAYLIST = "playAllSongsFromPlaylist";
+  public static final String RATE_SONG = "rateSong";
+  public static final String COMMAND_NAME = "name";
+  public static final String SONG_ID = "song_id";
 }

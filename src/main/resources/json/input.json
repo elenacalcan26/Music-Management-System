@@ -4,117 +4,152 @@
       {
         "id": 1,
         "title": "Smooth Operator",
-        "artists": ["Sade"],
+        "artists": [
+          "Sade"
+        ],
         "genre": "Jazz",
         "length": "04:58"
       },
       {
         "id": 2,
         "title": "Nightmare",
-        "artists": ["Halsey"],
+        "artists": [
+          "Halsey"
+        ],
         "genre": "Rock",
         "length": "03:51"
       },
       {
         "id": 3,
         "title": "On&On",
-        "artists": ["Erykah Badu"],
+        "artists": [
+          "Erykah Badu"
+        ],
         "genre": "R&B",
         "length": "03:47"
       },
       {
         "id": 4,
         "title": "Policy of Truth",
-        "artists": ["Depeche Mode"],
+        "artists": [
+          "Depeche Mode"
+        ],
         "genre": "Rock",
         "length": "04:55"
       },
       {
         "id": 5,
         "title": "The greatest",
-        "artists": ["Lana Del Rey"],
+        "artists": [
+          "Lana Del Rey"
+        ],
         "genre": "Rock",
         "length": "05:00"
       },
       {
         "id": 6,
         "title": "Californication",
-        "artists": ["Red Hot Chilli Peppers"],
+        "artists": [
+          "Red Hot Chilli Peppers"
+        ],
         "genre": "Rock",
         "length": "05:33"
       },
       {
         "id": 7,
         "title": "Black Magic Woman",
-        "artists": ["Santana"],
+        "artists": [
+          "Santana"
+        ],
         "genre": "Rock",
         "length": "02:48"
       },
       {
         "id": 8,
         "title": "California Love",
-        "artists": ["2Pac", "Dr. Dre"],
+        "artists": [
+          "2Pac",
+          "Dr. Dre"
+        ],
         "genre": "HipHop",
         "length": "04:22"
       },
       {
         "id": 9,
         "title": "All Eyez on Me",
-        "artists": ["2Pac"],
+        "artists": [
+          "2Pac"
+        ],
         "genre": "HipHop",
         "length": "05:08"
       },
       {
         "id": 10,
         "title": "Fragments of Time",
-        "artists": ["Daft Punk", "Todd Edwards"],
+        "artists": [
+          "Daft Punk",
+          "Todd Edwards"
+        ],
         "genre": "Electronic",
         "length": "04:40"
       },
       {
         "id": 11,
         "title": "Infinity Repeating (2013 Demo)",
-        "artists": ["Daft Punk", "Julian Casablanca"],
+        "artists": [
+          "Daft Punk",
+          "Julian Casablanca"
+        ],
         "genre": "Electronic",
         "length": "03:59"
       },
       {
         "id": 12,
         "title": "Rehab",
-        "artists": ["Amy Winehouse"],
+        "artists": [
+          "Amy Winehouse"
+        ],
         "genre": "R&B",
         "length": "03:35"
       },
       {
         "id": 13,
         "title": "Rehab",
-        "artists": ["Rihanna"],
+        "artists": [
+          "Rihanna"
+        ],
         "genre": "R&B",
         "length": "04:54"
       },
       {
         "id": 14,
         "title": "West Coast",
-        "artists": ["Lana Del Rey"],
+        "artists": [
+          "Lana Del Rey"
+        ],
         "genre": "Rock",
         "length": "04:17"
       },
       {
         "id": 15,
         "title": "Without Me",
-        "artists": ["Eminem"],
+        "artists": [
+          "Eminem"
+        ],
         "genre": "HipHop",
         "length": "04:50"
       },
       {
         "id": 16,
         "title": "Without Me",
-        "artists": ["Halsey"],
+        "artists": [
+          "Halsey"
+        ],
         "genre": "Pop",
         "length": "03:21"
       }
     ],
-    "users" : [
+    "users": [
       {
         "username": "user_1"
       },
@@ -131,5 +166,26 @@
         "username": "user_5"
       }
     ]
-  }
+  },
+  "commands": [
+    {
+      "name": "addToPlaylist",
+      "username": "user_1",
+      "song_id": 14
+    },
+    {
+      "name": "playSong",
+      "song_id": 6
+    },
+    {
+      "name": "playAllSongsFromPlaylist",
+      "username": "user_2"
+    },
+    {
+      "name": "rateSong",
+      "username": "user_1",
+      "song_id": 14,
+      "rate": 8.5
+    }
+  ]
 }
