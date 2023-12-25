@@ -26,7 +26,11 @@ public class Commands {
     song.incrementStreamCounter();
   }
 
-  public static void playAllSongsFromPlaylist() {}
+  public static void playAllSongsFromPlaylist(String username) throws NoItemPresentInTable {
+    User user = Queries.getUserByUsername(username);
+
+    user.getPlaylist().forEach(Song::incrementStreamCounter);
+  }
 
   public static void rateSong() {}
 }

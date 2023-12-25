@@ -69,7 +69,8 @@ public class JsonParser {
             (String) command.get(Constants.USERNAME), (Long) command.get(Constants.SONG_ID));
         case Constants.PLAY_SONG -> Commands.playSong(
             (Long) command.get(Constants.SONG_ID));
-        case Constants.PLAY_SONGS_FROM_PLAYLIST -> Commands.playAllSongsFromPlaylist();
+        case Constants.PLAY_SONGS_FROM_PLAYLIST -> Commands.playAllSongsFromPlaylist(
+            (String) command.get(Constants.USERNAME));
         case Constants.RATE_SONG -> Commands.rateSong();
         default -> logger.info("Unknown command!");
       }

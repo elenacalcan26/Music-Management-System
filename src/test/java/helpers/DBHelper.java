@@ -21,7 +21,9 @@ public class DBHelper {
   private static void setupUserTable() {
     User user1 = new User("user1");
     User user2 = new User("user2");
-    List<User> users = List.of(user1, user2);
+    User user3 = new User("user3");
+
+    List<User> users = List.of(user1, user2, user3);
 
     Database.getInstance().getUserTable().addAll(users);
   }

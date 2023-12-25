@@ -1,15 +1,19 @@
 import commands.Commands;
 import domain.Song;
 import exceptions.NoItemPresentInTable;
+import exceptions.SongPresentInPlaylistException;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import queries.Queries;
+import utils.Genre;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static helpers.DBHelper.cleanupDB;
 import static helpers.DBHelper.setupDB;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TestCommands {
   @BeforeAll
@@ -43,6 +47,30 @@ public class TestCommands {
     Song streamedSong = Queries.getSongById(2L);
 
     assertEquals(5, streamedSong.getStreamCounter());
+  }
+
+  @Test
+  void testPlaySongsFromPlaylist() throws NoItemPresentInTable, SongPresentInPlaylistException {
+    Song song1 = new Song(100L, "Paradise", List.of("Sade"), Genre.JAZZ, "03:37");
+    Song song2 = new Song(101L, "Frozen", List.of("Madonna"), Genre.POP, "06:07");
+    Song song3 = new Song(102L, "Low", List.of("Lenny Kravitz"), Genre.ROCK, "05:19");
+
+    song1.incrementStreamCounter();
+    song2.incrementStreamCounter();
+    song2.incrementStreamCounter();
+
+    var user = Queries.getUserByUsername("user3");
+    user.addSongToPlaylist(song1);
+    user.addSongToPlaylist(song2);
+    user.addSongToPlaylist(song3);
+
+    List<Long> expectedStreamCounters = List.of(2L, 3L, 1L);
+
+    Commands.playAllSongsFromPlaylist("user3");
+
+    assertIterableEquals(
+        expectedStreamCounters,
+        user.getPlaylist().stream().map(Song::getStreamCounter).collect(Collectors.toList()));
   }
 }
 
