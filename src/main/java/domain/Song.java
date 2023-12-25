@@ -71,6 +71,10 @@ public class Song {
     this.streamCounter = streamCounter;
   }
 
+  public void incrementStreamCounter() {
+    streamCounter++;
+  }
+
   @Override
   public String toString() {
     return "Song{" +

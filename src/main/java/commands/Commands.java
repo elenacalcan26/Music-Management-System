@@ -20,7 +20,11 @@ public class Commands {
     }
   }
 
-  public static void playSong() {}
+  public static void playSong(Long songId) throws NoItemPresentInTable {
+    Song song = Queries.getSongById(songId);
+
+    song.incrementStreamCounter();
+  }
 
   public static void playAllSongsFromPlaylist() {}
 

@@ -1,4 +1,5 @@
 import commands.Commands;
+import domain.Song;
 import exceptions.NoItemPresentInTable;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -32,4 +33,16 @@ public class TestCommands {
     assertEquals(2, user.getPlaylist().size());
     assertTrue(user.getPlaylist().stream().anyMatch(song -> song.equals(addedSong)));
   }
+
+  @Test
+  void testPlaySong() throws NoItemPresentInTable {
+    for (int i = 0; i < 5; i++) {
+      Commands.playSong(2L);
+    }
+
+    Song streamedSong = Queries.getSongById(2L);
+
+    assertEquals(5, streamedSong.getStreamCounter());
+  }
 }
+
