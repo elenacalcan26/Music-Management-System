@@ -1,5 +1,7 @@
 package utils;
 
+import java.util.List;
+
 public class Utils {
   private Utils() {}
 
@@ -18,5 +20,9 @@ public class Utils {
       case "pop" -> Genre.POP;
       default -> null;
     };
+  }
+
+  public static List<Genre> getEnumValues() {
+    return List.of(Genre.values());
   }
 }
