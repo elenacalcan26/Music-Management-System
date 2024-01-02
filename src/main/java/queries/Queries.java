@@ -6,7 +6,9 @@ import domain.User;
 import exceptions.NoItemPresentInTable;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Queries {
   private Queries() {}
@@ -50,5 +52,20 @@ public class Queries {
        .flatMap(Collection::stream)
        .distinct()
        .toList();
+  }
+
+  public static Map<String, List<String>> groupSongsByArtist() {
+    List<String> artists = getAllArtists();
+    Map<String, List<String>> songsByArtist = new HashMap<>();
+
+    artists.forEach(artist -> songsByArtist.put(artist,
+        Database.getInstance()
+            .getSongTable()
+            .stream()
+            .filter(e -> e.getArtists().contains(artist))
+            .map(Song::getTitle)
+            .toList()));
+
+    return songsByArtist;
   }
 }
