@@ -32,5 +32,9 @@ public class Commands {
     user.getPlaylist().forEach(Song::incrementStreamCounter);
   }
 
-  public static void rateSong() {}
+  public static void rateSong(String username, Long songId, double rate) throws NoItemPresentInTable {
+    Song song = Queries.getSongById(songId);
+
+    song.setRatingByUser(username, rate);
+  }
 }

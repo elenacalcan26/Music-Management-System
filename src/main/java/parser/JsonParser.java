@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 
 @SuppressWarnings("unchecked")
 public class JsonParser {
-  private static Logger logger = Logger.getLogger(JsonParser.class.getName());
+  private static final Logger logger = Logger.getLogger(JsonParser.class.getName());
 
   private JsonParser() {}
 
@@ -71,7 +71,9 @@ public class JsonParser {
             (Long) command.get(Constants.SONG_ID));
         case Constants.PLAY_SONGS_FROM_PLAYLIST -> Commands.playAllSongsFromPlaylist(
             (String) command.get(Constants.USERNAME));
-        case Constants.RATE_SONG -> Commands.rateSong();
+        case Constants.RATE_SONG -> Commands.rateSong(
+            (String) command.get(Constants.USERNAME), (Long) command.get(Constants.SONG_ID),
+            (double) command.get(Constants.RATE));
         default -> logger.info("Unknown command!");
       }
     }

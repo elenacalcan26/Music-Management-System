@@ -72,5 +72,16 @@ public class TestCommands {
         expectedStreamCounters,
         user.getPlaylist().stream().map(Song::getStreamCounter).collect(Collectors.toList()));
   }
+
+  @Test
+  void testRateSongCommand() throws NoItemPresentInTable {
+    Commands.rateSong("user1", 1L, 9.0);
+    Commands.rateSong("user2", 1L, 7.5);
+    Commands.rateSong("user3", 1L, 6.0);
+
+    Song song = Queries.getSongById(1L);
+
+    assertEquals(7.5, song.getAverageRating());
+  }
 }
 

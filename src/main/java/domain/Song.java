@@ -2,7 +2,9 @@ package domain;
 
 import utils.Genre;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 public class Song {
@@ -13,6 +15,10 @@ public class Song {
   private String length;
   private long streamCounter;
 
+  private Map<String, Double> ratings = new HashMap<>();
+
+  private Double averageRating;
+
   public Song(Long id, String title, List<String> artists, Genre genre, String length) {
     this.id = id;
     this.title = title;
@@ -20,6 +26,7 @@ public class Song {
     this.genre = genre;
     this.length = length;
     this.streamCounter = 0;
+    this.averageRating = 0.0;
   }
 
   public Long getId() {
@@ -70,9 +77,29 @@ public class Song {
   public void setStreamCounter(long streamCounter) {
     this.streamCounter = streamCounter;
   }
+  public Double getAverageRating() {
+    return averageRating;
+  }
+
+  public void setAverageRating(Double averageRating) {
+    this.averageRating = averageRating;
+  }
 
   public void incrementStreamCounter() {
     streamCounter++;
+  }
+
+  public void setRatingByUser(String username, Double givenRating) {
+    ratings.putIfAbsent(username, givenRating);
+
+    computeFinalRating();
+  }
+
+  private void computeFinalRating() {
+    var ratingSum = ratings.values().stream().reduce(0.0, Double::sum);
+    var totalRatings = ratings.size();
+
+    averageRating = ratingSum / totalRatings;
   }
 
   @Override
@@ -98,4 +125,5 @@ public class Song {
   public int hashCode() {
     return Objects.hash(id, title, artists, genre);
   }
+
 }

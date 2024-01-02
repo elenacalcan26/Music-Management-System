@@ -20,6 +20,8 @@ public class Constants {
   public static final String PLAY_SONG = "playSong";
   public static final String PLAY_SONGS_FROM_PLAYLIST = "playAllSongsFromPlaylist";
   public static final String RATE_SONG = "rateSong";
+
+  public static final String RATE = "rate";
   public static final String COMMAND_NAME = "name";
   public static final String SONG_ID = "song_id";
 }
