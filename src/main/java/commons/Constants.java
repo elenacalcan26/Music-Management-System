@@ -22,6 +22,14 @@ public class Constants {
   public static final String RATE_SONG = "rateSong";
 
   public static final String RATE = "rate";
-  public static final String COMMAND_NAME = "name";
+  public static final String NAME = "name";
   public static final String SONG_ID = "song_id";
+
+  public static final String QUERIES = "queries";
+  public static final String GET_ALL_ARTISTS = "getAllArtists";
+  public static final String GROUP_SONGS_BY_ARTIST = "groupSongsByArtists";
+  public static final String GROUP_SONGS_BY_GENRE = "groupSongsByGenre";
+  public static final String ORDER_SONGS_BY_STREAM_COUNTER = "orderSongsByStreamCounter";
+  public static final String ORDER_SONGS_BY_RATING = "orderSongsByRating";
+
 }

@@ -30,6 +30,7 @@ public class JsonParser {
     JSONObject jsonObject;
     JSONObject jsonDB;
     JSONArray jsonCommands;
+    JSONArray jsonQueries;
 
     try (FileReader reader = new FileReader(inputFile)) {
       logger.info("Read the input file!");
@@ -42,9 +43,11 @@ public class JsonParser {
 
     jsonDB = (JSONObject) jsonObject.get(Constants.DATABASE);
     jsonCommands = (JSONArray) jsonObject.get(Constants.COMMANDS);
+    jsonQueries = (JSONArray) jsonObject.get(Constants.QUERIES);
 
     parseDatabase(jsonDB);
     parseCommands(jsonCommands);
+    parseQueries(jsonQueries);
   }
 
   private static void parseDatabase(JSONObject jsonDB) {
@@ -62,7 +65,7 @@ public class JsonParser {
 
     for (var item : jsonCommands) {
       JSONObject command = (JSONObject) item;
-      String commandName = (String) command.get(Constants.COMMAND_NAME);
+      String commandName = (String) command.get(Constants.NAME);
 
       switch (commandName) {
         case Constants.ADD_TO_PLAYLIST -> Commands.addToPlaylist(
@@ -75,6 +78,24 @@ public class JsonParser {
             (String) command.get(Constants.USERNAME), (Long) command.get(Constants.SONG_ID),
             (double) command.get(Constants.RATE));
         default -> logger.info("Unknown command!");
+      }
+    }
+  }
+
+  private static void parseQueries(JSONArray jsonQueries) {
+    logger.info("Get Queries!");
+
+    for (var item : jsonQueries) {
+      JSONObject query = (JSONObject) item;
+      String queryName = (String) query.get(Constants.NAME);
+
+      switch (queryName) {
+        case Constants.GET_ALL_ARTISTS -> logger.info("get all artists");
+        case Constants.GROUP_SONGS_BY_ARTIST -> logger.info("group songs by artist");
+        case Constants.GROUP_SONGS_BY_GENRE -> logger.info("group songs by genre");
+        case Constants.ORDER_SONGS_BY_STREAM_COUNTER -> logger.info("order songs by stream counter");
+        case Constants.ORDER_SONGS_BY_RATING -> logger.info("order songs by rating");
+        default -> logger.info("Unknown query!");
       }
     }
   }

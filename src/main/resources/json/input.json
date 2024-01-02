@@ -187,5 +187,22 @@
       "song_id": 14,
       "rate": 8.5
     }
+  ],
+  "queries": [
+    {
+      "name": "getAllArtists"
+    },
+    {
+      "name": "groupSongsByArtists"
+    },
+    {
+      "name": "groupSongsByGenre"
+    },
+    {
+      "name": "orderSongsByStreamCounter"
+    },
+    {
+      "name": "orderSongsByRating"
+    }
   ]
 }
