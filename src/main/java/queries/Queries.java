@@ -91,4 +91,14 @@ public class Queries {
         .filter(e -> !e.getValue().isEmpty())
         .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
   }
+
+  public static List<String> getSongsByArtist(String artist) {
+    return Database
+        .getInstance()
+        .getSongTable()
+        .stream()
+        .filter(e -> e.getArtists().contains(artist))
+        .map(Song::getTitle)
+        .toList();
+  }
 }

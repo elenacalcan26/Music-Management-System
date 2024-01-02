@@ -9,6 +9,7 @@ public class Constants {
   public static final String ID = "id";
   public static final String TITLE = "title";
   public static final String ARTISTS = "artists";
+  public static final String ARTIST = "artist";
   public static final String GENRE = "genre";
   public static final String LENGTH = "length";
 
@@ -29,6 +30,7 @@ public class Constants {
   public static final String GET_ALL_ARTISTS = "getAllArtists";
   public static final String GROUP_SONGS_BY_ARTIST = "groupSongsByArtists";
   public static final String GROUP_SONGS_BY_GENRE = "groupSongsByGenre";
+  public static final String GET_SONG_BY_ARTIST = "getSongsByArtist";
   public static final String ORDER_SONGS_BY_STREAM_COUNTER = "orderSongsByStreamCounter";
   public static final String ORDER_SONGS_BY_RATING = "orderSongsByRating";
 

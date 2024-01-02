@@ -63,4 +63,11 @@ public class TestQueries {
     assertEquals(3, songsByGenre.size());
     assertEquals(2, songsByGenre.get(Genre.ROCK).size());
   }
+
+  @Test
+  void testGetSongsByArtist() {
+    var songsByArtist = Queries.getSongsByArtist("Daft Punk");
+
+    assertEquals(2, songsByArtist.size());
+  }
 }
