@@ -96,7 +96,7 @@ public class JsonParser {
         case Constants.GROUP_SONGS_BY_GENRE -> System.out.println(Queries.groupSongsByGenre());
         case Constants.GET_SONG_BY_ARTIST -> System.out.println(
             Queries.getSongsByArtist((String) query.get(Constants.ARTIST)));
-        case Constants.ORDER_SONGS_BY_STREAM_COUNTER -> logger.info("order songs by stream counter");
+        case Constants.ORDER_SONGS_BY_STREAM_COUNTER -> Queries.orderSongsByStreamCounter();
         case Constants.ORDER_SONGS_BY_RATING -> logger.info("order songs by rating");
         default -> logger.info("Unknown query!");
       }

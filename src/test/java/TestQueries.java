@@ -1,3 +1,4 @@
+import commands.Commands;
 import domain.Song;
 import domain.User;
 import exceptions.NoItemPresentInTable;
@@ -69,5 +70,23 @@ public class TestQueries {
     var songsByArtist = Queries.getSongsByArtist("Daft Punk");
 
     assertEquals(2, songsByArtist.size());
+  }
+
+  @Test
+  void testOrderSongsByStreamingCounter() throws NoItemPresentInTable {
+    Commands.addToPlaylist("user1", 1L);
+    Commands.addToPlaylist("user1", 2L);
+    Commands.addToPlaylist("user2", 2L);
+    Commands.addToPlaylist("user2", 3L);
+    Commands.addToPlaylist("user3", 3L);
+    Commands.addToPlaylist("user3", 2L);
+
+    Commands.playAllSongsFromPlaylist("user1");
+    Commands.playAllSongsFromPlaylist("user2");
+    Commands.playAllSongsFromPlaylist("user3");
+
+    var orderedSongs = Queries.orderSongsByStreamCounter();
+
+    assertEquals(2L, orderedSongs.get(0).getId());
   }
 }

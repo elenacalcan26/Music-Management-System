@@ -7,10 +7,7 @@ import exceptions.NoItemPresentInTable;
 import utils.Genre;
 import utils.Utils;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Queries {
@@ -99,6 +96,15 @@ public class Queries {
         .stream()
         .filter(e -> e.getArtists().contains(artist))
         .map(Song::getTitle)
+        .toList();
+  }
+
+  public static List<Song> orderSongsByStreamCounter() {
+    return Database
+        .getInstance()
+        .getSongTable()
+        .stream()
+        .sorted(Comparator.comparing(Song::getStreamCounter).reversed())
         .toList();
   }
 }
