@@ -99,21 +99,12 @@ public class Queries {
         .toList();
   }
 
-  public static List<Song> orderSongsByStreamCounter() {
+  public static List<Song> orderSongsBy(Comparator<Song> comparatorFunc) {
     return Database
         .getInstance()
         .getSongTable()
         .stream()
-        .sorted(Comparator.comparing(Song::getStreamCounter).reversed())
-        .toList();
-  }
-
-  public static List<Song> orderSongsByRating() {
-    return Database
-        .getInstance()
-        .getSongTable()
-        .stream()
-        .sorted(Comparator.comparing(Song::getAverageRating).reversed())
+        .sorted(comparatorFunc.reversed())
         .toList();
   }
 }

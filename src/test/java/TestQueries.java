@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 import queries.Queries;
 import utils.Genre;
 
+import java.util.Comparator;
+
 import static helpers.DBHelper.cleanupDB;
 import static helpers.DBHelper.setupDB;
 
@@ -85,7 +87,7 @@ public class TestQueries {
     Commands.playAllSongsFromPlaylist("user2");
     Commands.playAllSongsFromPlaylist("user3");
 
-    var orderedSongs = Queries.orderSongsByStreamCounter();
+    var orderedSongs = Queries.orderSongsBy(Comparator.comparing(Song::getStreamCounter));
 
     assertEquals(2L, orderedSongs.get(0).getId());
   }
@@ -101,7 +103,7 @@ public class TestQueries {
     Commands.rateSong("user3", 4L, 8.0);
     Commands.rateSong("user3", 3L, 9.5);
 
-    var orderedSongs = Queries.orderSongsByRating();
+    var orderedSongs = Queries.orderSongsBy(Comparator.comparing(Song::getAverageRating));
 
     assertEquals(3L, orderedSongs.get(0).getId());
   }

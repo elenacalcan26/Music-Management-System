@@ -15,6 +15,7 @@ import utils.Utils;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -96,8 +97,8 @@ public class JsonParser {
         case Constants.GROUP_SONGS_BY_GENRE -> System.out.println(Queries.groupSongsByGenre());
         case Constants.GET_SONG_BY_ARTIST -> System.out.println(
             Queries.getSongsByArtist((String) query.get(Constants.ARTIST)));
-        case Constants.ORDER_SONGS_BY_STREAM_COUNTER -> Queries.orderSongsByStreamCounter();
-        case Constants.ORDER_SONGS_BY_RATING -> Queries.orderSongsByRating();
+        case Constants.ORDER_SONGS_BY_STREAM_COUNTER -> Queries.orderSongsBy(Comparator.comparing(Song::getStreamCounter));
+        case Constants.ORDER_SONGS_BY_RATING -> Queries.orderSongsBy(Comparator.comparing(Song::getAverageRating));
         default -> logger.info("Unknown query!");
       }
     }
