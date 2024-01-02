@@ -107,4 +107,13 @@ public class Queries {
         .sorted(Comparator.comparing(Song::getStreamCounter).reversed())
         .toList();
   }
+
+  public static List<Song> orderSongsByRating() {
+    return Database
+        .getInstance()
+        .getSongTable()
+        .stream()
+        .sorted(Comparator.comparing(Song::getAverageRating).reversed())
+        .toList();
+  }
 }

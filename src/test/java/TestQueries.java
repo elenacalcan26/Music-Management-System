@@ -89,4 +89,20 @@ public class TestQueries {
 
     assertEquals(2L, orderedSongs.get(0).getId());
   }
+
+  @Test
+  void testOrderSongsByRating() throws NoItemPresentInTable {
+    Commands.rateSong("user1", 3L, 10.0);
+    Commands.rateSong("user1", 1L, 7.0);
+    Commands.rateSong("user1", 5L, 8.5);
+    Commands.rateSong("user2", 1L, 5.0);
+    Commands.rateSong("user2", 5L, 6.5);
+    Commands.rateSong("user3", 2L, 9.5);
+    Commands.rateSong("user3", 4L, 8.0);
+    Commands.rateSong("user3", 3L, 9.5);
+
+    var orderedSongs = Queries.orderSongsByRating();
+
+    assertEquals(3L, orderedSongs.get(0).getId());
+  }
 }
