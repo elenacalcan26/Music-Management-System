@@ -10,6 +10,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import queries.Queries;
 import utils.Utils;
 
 import java.io.FileReader;
@@ -90,7 +91,7 @@ public class JsonParser {
       String queryName = (String) query.get(Constants.NAME);
 
       switch (queryName) {
-        case Constants.GET_ALL_ARTISTS -> logger.info("get all artists");
+        case Constants.GET_ALL_ARTISTS -> System.out.println(Queries.getAllArtists());
         case Constants.GROUP_SONGS_BY_ARTIST -> logger.info("group songs by artist");
         case Constants.GROUP_SONGS_BY_GENRE -> logger.info("group songs by genre");
         case Constants.ORDER_SONGS_BY_STREAM_COUNTER -> logger.info("order songs by stream counter");

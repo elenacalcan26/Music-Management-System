@@ -40,4 +40,11 @@ public class TestQueries {
     assertEquals("Without Me", queriedSong.getTitle());
     assertEquals(Genre.HIPHOP, queriedSong.getGenre());
   }
+
+  @Test
+  void testGetAllArtists() {
+    var artists = Queries.getAllArtists();
+
+    assertEquals(6, artists.size());
+  }
 }

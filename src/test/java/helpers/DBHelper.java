@@ -52,7 +52,23 @@ public class DBHelper {
         "04:05"
     );
 
-    List<Song> songs = List.of(song1, song2, song3);
+    Song song4 = new Song(
+        4L,
+        "Fragments of Time",
+        List.of("Daft Punk", "Todd Edwards"),
+        Genre.ELECTRONIC,
+        "04:40"
+    );
+
+    Song song5 = new Song(
+        5L,
+        "Infinity Repeating (2013 Demo)",
+        List.of("Daft Punk", "Julian Casablanca"),
+        Genre.ELECTRONIC,
+        "03:59"
+    );
+
+    List<Song> songs = List.of(song1, song2, song3, song4, song5);
 
     Database.getInstance().getSongTable().addAll(songs);
   }

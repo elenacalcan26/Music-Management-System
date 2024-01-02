@@ -5,6 +5,9 @@ import domain.Song;
 import domain.User;
 import exceptions.NoItemPresentInTable;
 
+import java.util.Collection;
+import java.util.List;
+
 public class Queries {
   private Queries() {}
 
@@ -36,5 +39,16 @@ public class Queries {
     }
 
     return song.get();
+  }
+
+  public static List<String> getAllArtists() {
+   return Database
+       .getInstance()
+       .getSongTable()
+       .stream()
+       .map(Song::getArtists)
+       .flatMap(Collection::stream)
+       .distinct()
+       .toList();
   }
 }
