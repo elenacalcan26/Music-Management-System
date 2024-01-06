@@ -99,6 +99,7 @@ public class JsonParser {
             Queries.getSongsByArtist((String) query.get(Constants.ARTIST)));
         case Constants.ORDER_SONGS_BY_STREAM_COUNTER -> Queries.orderSongsBy(Comparator.comparing(Song::getStreamCounter));
         case Constants.ORDER_SONGS_BY_RATING -> Queries.orderSongsBy(Comparator.comparing(Song::getAverageRating));
+        case Constants.GET_FAVORITE_SONGS -> System.out.println(Queries.getFavoriteSongs());
         default -> logger.info("Unknown query!");
       }
     }

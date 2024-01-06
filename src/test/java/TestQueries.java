@@ -107,4 +107,22 @@ public class TestQueries {
 
     assertEquals(3L, orderedSongs.get(0).getId());
   }
+
+  @Test
+  void testGetFavoriteSongs() throws NoItemPresentInTable {
+    Commands.addToPlaylist("user1", 1L);
+    Commands.addToPlaylist("user1", 2L);
+    Commands.addToPlaylist("user2", 2L);
+    Commands.addToPlaylist("user2", 3L);
+    Commands.addToPlaylist("user3", 3L);
+    Commands.addToPlaylist("user3", 2L);
+    Commands.addToPlaylist("user3", 1L);
+
+    var favoriteSongs = Queries.getFavoriteSongs();
+
+    var totalNumberOfApparitionFirstSongs = favoriteSongs.keySet().stream().findFirst();
+
+    assertEquals(3, totalNumberOfApparitionFirstSongs.get());
+    assertEquals(2L, favoriteSongs.get(totalNumberOfApparitionFirstSongs.get()).get(0).getId());
+  }
 }

@@ -174,8 +174,18 @@
       "song_id": 14
     },
     {
+      "name": "addToPlaylist",
+      "username": "user_1",
+      "song_id": 12
+    },
+    {
       "name": "playSong",
       "song_id": 6
+    },
+    {
+      "name": "addToPlaylist",
+      "username": "user_2",
+      "song_id": 14
     },
     {
       "name": "playAllSongsFromPlaylist",
@@ -207,6 +217,9 @@
     },
     {
       "name": "orderSongsByRating"
+    },
+    {
+      "name": "getFavoriteSongs"
     }
   ]
 }

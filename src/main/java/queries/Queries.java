@@ -107,4 +107,25 @@ public class Queries {
         .sorted(comparatorFunc.reversed())
         .toList();
   }
+
+  public static Map<Integer, List<Song>> getFavoriteSongs() {
+    Map<Song, Integer> songsOccurrencesInUsersPlaylist = new HashMap<>();
+
+    Database
+        .getInstance()
+        .getUserTable()
+        .stream()
+        .map(User::getPlaylist)
+        .flatMap(Set::stream)
+        .forEach(song -> songsOccurrencesInUsersPlaylist.compute(song, (key, value) -> (value == null) ? 1 : value + 1));
+
+    return songsOccurrencesInUsersPlaylist
+        .keySet()
+        .stream()
+        .collect(
+            Collectors.groupingBy(
+                songsOccurrencesInUsersPlaylist::get,
+                () -> new TreeMap<>(Comparator.reverseOrder()),
+                Collectors.toList()));
+  }
 }
