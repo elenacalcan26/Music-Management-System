@@ -110,7 +110,11 @@ public class JsonParser {
         case Constants.ORDER_SONGS_BY_RATING ->
             tasks.add(() -> Queries.orderSongsBy(Comparator.comparing(Song::getAverageRating)));
 
-        case Constants.GET_FAVORITE_SONGS -> tasks.add(() -> System.out.println(Queries.getFavoriteSongs()));
+        case Constants.GET_FAVORITE_SONGS ->
+            tasks.add(() -> System.out.println(Queries.getFavoriteSongs()));
+
+        case Constants.GET_ACTIVE_USERS ->
+            tasks.add(() -> System.out.println(Queries.getActiveUsers()));
 
         default -> logger.info("Unknown query!");
       }
@@ -170,7 +174,6 @@ public class JsonParser {
             (double) command.get(Constants.RATE)));
       default:
         logger.info("Unknown command!");
-
         return null;
     }
   }

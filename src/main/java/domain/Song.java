@@ -81,6 +81,10 @@ public class Song {
     return averageRating;
   }
 
+  public Map<String, Double> getRatings() {
+    return ratings;
+  }
+
   public void setAverageRating(Double averageRating) {
     this.averageRating = averageRating;
   }

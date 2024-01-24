@@ -9,11 +9,13 @@ import queries.Queries;
 import utils.Genre;
 
 import java.util.Comparator;
+import java.util.List;
 
 import static helpers.DBHelper.cleanupDB;
 import static helpers.DBHelper.setupDB;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 
 
 public class TestQueries {
@@ -124,5 +126,24 @@ public class TestQueries {
 
     assertEquals(3, totalNumberOfApparitionFirstSongs.get());
     assertEquals(2L, favoriteSongs.get(totalNumberOfApparitionFirstSongs.get()).get(0).getId());
+  }
+
+  @Test
+  void testGetActiveUsers() throws NoItemPresentInTable {
+    Commands.rateSong("user1", 3L, 10.0);
+    Commands.rateSong("user1", 1L, 7.0);
+    Commands.rateSong("user1", 5L, 8.5);
+    Commands.rateSong("user2", 1L, 5.0);
+    Commands.rateSong("user2", 5L, 6.5);
+    Commands.rateSong("user3", 2L, 9.5);
+    Commands.rateSong("user3", 4L, 8.0);
+    Commands.rateSong("user3", 3L, 9.5);
+
+    var activeUsers = Queries.getActiveUsers();
+
+    List<String> expectedUsers = List.of("user1", "user3", "user2");
+
+    assertEquals(3, activeUsers.size());
+    assertIterableEquals(expectedUsers, activeUsers);
   }
 }

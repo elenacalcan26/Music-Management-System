@@ -8,6 +8,7 @@ import utils.Genre;
 import utils.Utils;
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class Queries {
@@ -127,5 +128,24 @@ public class Queries {
                 songsOccurrencesInUsersPlaylist::get,
                 () -> new TreeMap<>(Comparator.reverseOrder()),
                 Collectors.toList()));
+  }
+
+  public static List<String> getActiveUsers() {
+    Map<String, Long> userActivities = Database.getInstance()
+        .getSongTable()
+        .stream()
+        .flatMap(song -> song.getRatings().keySet().stream())
+        .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+
+    TreeMap<Long, List<String>> orderedUsersByActivity = userActivities
+        .keySet()
+        .stream()
+        .collect(
+            Collectors.groupingBy(
+                userActivities::get,
+                () -> new TreeMap<>(Comparator.reverseOrder()),
+                Collectors.toList()));
+
+    return orderedUsersByActivity.values().stream().flatMap(Collection::stream).toList();
   }
 }

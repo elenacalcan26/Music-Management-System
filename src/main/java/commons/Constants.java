@@ -34,5 +34,6 @@ public class Constants {
   public static final String ORDER_SONGS_BY_STREAM_COUNTER = "orderSongsByStreamCounter";
   public static final String ORDER_SONGS_BY_RATING = "orderSongsByRating";
   public static final String GET_FAVORITE_SONGS = "getFavoriteSongs";
+  public static final String GET_ACTIVE_USERS = "getActiveUsers";
 
 }
