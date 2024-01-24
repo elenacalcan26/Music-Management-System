@@ -20,7 +20,7 @@ public class TestDatabasePopulationFromInput {
   List<String> artistsSong2 = List.of("2Pac", "Dr. Dre");
 
   @BeforeAll
-  public static void setup() throws NoItemPresentInTable {
+  public static void setup() throws InterruptedException {
     JsonParser.parseInput("src/test/resources/inputParserTestFile.json");
   }
 
